@@ -6,10 +6,13 @@ public class BallMonitor : MonoBehaviour
 {
     private Rigidbody playerRb;
     public ParticleSystem explosionParticle;
+    private UIMainGame uIMainGame;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        uIMainGame = GameObject.Find("Canvas").GetComponent<UIMainGame>();
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class BallMonitor : MonoBehaviour
         explosionParticle.Play();
         if (collision.gameObject.CompareTag("Block"))
         {
-            
+            uIMainGame.UpdateScore();
             Destroy(collision.gameObject);
         }
     }
@@ -42,7 +45,7 @@ public class BallMonitor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
-            Debug.Log("Game Over");
+            uIMainGame.GameOver();
             Destroy(gameObject);
         }
     }

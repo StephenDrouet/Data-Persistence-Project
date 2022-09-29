@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3950119009253449798}
   - component: {fileID: -2243930469564181831}
+  - component: {fileID: -4831337268239055741}
   m_Layer: 0
   m_Name: Wave
-  m_TagString: Untagged
+  m_TagString: Wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +56,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9f88c4edbfc784980aa8af9ed40b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-4831337268239055741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476181476596324112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 88.161896, y: 2.6000519, z: 2.12499}
+  m_Center: {x: -0.04270935, y: -0.37477112, z: 0.039243758}
 --- !u!1001 &7608505865892564088
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ TagManager:
   - Ball
   - GameOver
   - Block
+  - Wave
   layers:
   - Default
   - TransparentFX

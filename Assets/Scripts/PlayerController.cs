@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject lineObject;
     private LineRenderer lineRenderer;
     public Rigidbody ballRb;
+    private SpawnManager spawnManager;
+
 
     private float horizontalInput;
     private float xBound = 44.5f;
-    private bool isOnPlayer = true;
+    public bool isOnPlayer = true;
+
     private float xPos = 0;
     private float yPos = 0;
     private Vector3 initDirection;
@@ -23,7 +27,8 @@ public class PlayerController : MonoBehaviour
     public float angleMultiply = 10f;
     // Start is called before the first frame update
     void Start()
-    {
+    {        
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         lineRenderer = lineObject.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, new Vector3(0, 2, 0));
         lineObject.SetActive(true);
@@ -33,14 +38,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOnPlayer)
+        if (spawnManager.isGaming)
         {
-            ControlLine();
+            if (isOnPlayer)
+            {
+                ControlLine();
+            }
+            else
+            {
+                HorizontalMove();
+            }
         }
         else
         {
-            HorizontalMove();
-        } 
+            restartScene();
+        }
+    }
+
+    void restartScene()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     void ControlLine()
