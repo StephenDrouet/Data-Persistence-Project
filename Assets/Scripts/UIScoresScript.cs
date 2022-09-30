@@ -1,20 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIScoresScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TextMeshProUGUI namesText;
+    public TextMeshProUGUI scoresText;
+
     void Start()
     {
-        
+        ShowTable();
     }
 
-    // Update is called once per frame
-    void Update()
+    void ShowTable()
     {
-        
+        namesText.SetText("APODO\n");
+        scoresText.SetText("SCORES\n");
+
+        foreach (var score in MainManager.Instance.tableScore)
+        {
+            namesText.SetText(namesText.text + "\n" + score.name);
+            scoresText.SetText(scoresText.text + "\n" + score.score);
+        }
     }
 
     public void BackMenu()

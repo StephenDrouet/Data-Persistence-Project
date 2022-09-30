@@ -7,10 +7,12 @@ public class BallMonitor : MonoBehaviour
     private Rigidbody playerRb;
     public ParticleSystem explosionParticle;
     private UIMainGame uIMainGame;
+    private AudioSource boingSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        boingSound = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
         uIMainGame = GameObject.Find("Canvas").GetComponent<UIMainGame>();
     }
@@ -33,6 +35,7 @@ public class BallMonitor : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        boingSound.Play();
         explosionParticle.Play();
         if (collision.gameObject.CompareTag("Block"))
         {

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -25,7 +24,8 @@ public class UIMenuScript : MonoBehaviour
     public void GetNickName(string name)
     {
         nickName = name;
-        if(nickName.Length > 3 && nickName.Length < 17)
+
+        if(nickName.Length >= 3 && nickName.Length <= 13)
         {
             isNameCorrect = true;
         }
@@ -36,7 +36,7 @@ public class UIMenuScript : MonoBehaviour
         if (!isNameCorrect)
         {
             errorObject.SetActive(true);
-            errorText.SetText("El Apodo debe contener entre 4 y 16 caracteres");
+            errorText.SetText("El Apodo debe contener entre 3 y 13 caracteres");
             return;
         }
 
